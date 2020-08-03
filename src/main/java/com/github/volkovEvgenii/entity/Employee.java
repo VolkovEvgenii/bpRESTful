@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "employee")
+@Table(name = "employee", schema = "public")
 public class Employee {
     
     @Id
@@ -24,7 +24,11 @@ public class Employee {
     @Column(name = "birth_date")
     private LocalDateTime birthDate;
 
-    @ManyToOne (cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne (cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE,
+            CascadeType.DETACH,
+            CascadeType.REFRESH})
     @JoinColumn(name = "position_fk")
     private Position position;
 
